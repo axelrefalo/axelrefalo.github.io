@@ -1,15 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-
-const projects = await getCollection("projects");
-projects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 ---
 
 <BaseLayout>
   <div class="container">
-
-    <!-- HERO -->
     <section id="home">
       <div class="hero-photo">
         <img src="/profil.png" alt="Axel Refalo" />
@@ -23,71 +17,6 @@ projects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
         </div>
       </div>
     </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-label">Selected work</div>
-      <div class="project-list">
-        {projects.map((project, i) => (
-          <>
-            <div class="project-item">
-              <div>
-                <div class="project-name">
-                  <a href={`/projects/${project.id}`}>{project.data.title}</a>
-                </div>
-                <div class="project-desc">{project.data.description}</div>
-              </div>
-              <div class="project-year">{project.data.year}</div>
-            </div>
-            {i < projects.length - 1 && <hr class="divider" />}
-          </>
-        ))}
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications">
-      <div class="section-label">Publications</div>
-      <div class="pub-list">
-
-        <div class="pub-item">
-          <div>
-            <div class="pub-title"><a href="#">Title of Your Paper or Article</a></div>
-            <div class="pub-venue">Conference / Journal name</div>
-          </div>
-          <div class="pub-year">2024</div>
-        </div>
-        <hr class="divider" />
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-label">About</div>
-      <div class="about-text">
-        <p>
-          A few sentences about who you are, what you care about,
-          and what drives your work. Keep it personal and honest.
-        </p>
-        <p>
-          You can mention your background, your interests outside of work,
-          or what you're currently learning. This is the human part of your portfolio.
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-label">Get in touch</div>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:ton@email.com">Email</a>
-        <a class="contact-link" href="https://github.com/axelrefalo" target="_blank">GitHub</a>
-        <a class="contact-link" href="#">LinkedIn</a>
-        <a class="contact-link" href="#">CV</a>
-      </div>
-    </section>
-
   </div>
 </BaseLayout>
 
@@ -98,21 +27,8 @@ projects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
     padding: 0 40px;
   }
 
-  section {
-    padding: 56px 0;
-    border-bottom: 1px solid #e8e8e8;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 28px;
-  }
-
-  /* ── HERO ── */
   #home {
+    padding: 56px 0;
     display: flex;
     gap: 40px;
     align-items: flex-start;
@@ -154,125 +70,6 @@ projects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
     line-height: 1.8;
     max-width: 520px;
   }
-
-  /* ── PROJECTS ── */
-  .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .project-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 20px;
-  }
-
-  .project-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 4px;
-  }
-
-  .project-name a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .project-name a:hover {
-    border-bottom: 1px solid #111;
-  }
-
-  .project-desc {
-    font-size: 13px;
-    color: #888;
-    font-style: italic;
-  }
-
-  .project-year {
-    font-size: 12px;
-    color: #bbb;
-    flex-shrink: 0;
-  }
-
-  .divider {
-    border: none;
-    border-top: 0.5px solid #eee;
-  }
-
-  /* ── PUBLICATIONS ── */
-  .pub-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .pub-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 20px;
-  }
-
-  .pub-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 4px;
-    font-style: italic;
-  }
-
-  .pub-title a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .pub-title a:hover {
-    border-bottom: 1px solid #111;
-  }
-
-  .pub-venue {
-    font-size: 13px;
-    color: #888;
-  }
-
-  .pub-year {
-    font-size: 12px;
-    color: #bbb;
-    flex-shrink: 0;
-  }
-
-  /* ── ABOUT ── */
-  .about-text {
-    font-size: 15px;
-    color: #333;
-    line-height: 1.85;
-    max-width: 600px;
-  }
-
-  .about-text p + p {
-    margin-top: 16px;
-  }
-
-  /* ── CONTACT ── */
-  .contact-links {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .contact-link {
-    font-size: 13px;
-    color: #111;
-    text-decoration: none;
-    border-bottom: 1px solid #111;
-    padding-bottom: 1px;
-    transition: opacity 0.15s;
-  }
-
-  .contact-link:hover { opacity: 0.5; }
 
   @media (max-width: 600px) {
     .container { padding: 0 20px; }

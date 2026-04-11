@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About — Axel Refalo">
+  <div class="container">
+    <section>
+      <div class="section-label">About</div>
+      <div class="about-text">
+        <p>
+          A few sentences about who you are, what you care about,
+          and what drives your work. Keep it personal and honest.
+        </p>
+        <p>
+          You can mention your background, your interests outside of work,
+          or what you're currently learning. This is the human part of your portfolio.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  section {
+    padding: 56px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 28px;
+  }
+
+  .about-text {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.85;
+    max-width: 600px;
+  }
+
+  .about-text p + p {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+  }
+</style>

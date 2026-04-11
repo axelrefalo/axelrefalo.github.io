@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact — Axel Refalo">
+  <div class="container">
+    <section>
+      <div class="section-label">Get in touch</div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:ton@email.com">Email</a>
+        <a class="contact-link" href="https://github.com/axelrefalo" target="_blank">GitHub</a>
+        <a class="contact-link" href="#">LinkedIn</a>
+        <a class="contact-link" href="#">CV</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  section {
+    padding: 56px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 28px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid #111;
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+
+  .contact-link:hover { opacity: 0.5; }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+  }
+</style>
