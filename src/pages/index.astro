@@ -1,39 +1,153 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const education = [
+  { name: "École de Technologie Supérieure", sub: "M.Sc. in Automation Engineering", period: "2024 – now" },
+  { name: "McGill University", sub: "Exchange program, Computer Science", period: "2024 – 2025" },
+  { name: "University of Technology of Belfort-Montbéliard", sub: "B.Eng. and M.Eng. in Mechanical Engineering", period: "2020 – 2026" },
+];
+
 ---
 
 <BaseLayout>
   <div class="container">
+
     <section id="home">
-      <div class="hero-photo">
-        <img src="/profil.png" alt="Axel Refalo" />
+      <div class="hero-top">
+        <div class="hero-photo">
+          <img src="/profil.png" alt="Axel Refalo" />
+        </div>
+        <div>
+          <div class="hero-name">Axel Refalo</div>
+          <div class="hero-role">M.Sc. in Automation Engineering from ETS</div>
+          <div class="hero-role">B.Eng. and M.Eng. in Mechanical Engineering from UTBM</div>
+        </div>
       </div>
-      <div>
-        <div class="hero-name">Axel Refalo</div>
-        <div class="hero-role">Robotics & Automation · M.Sc. ÉTS, CoRo Lab · Montréal</div>
-        <div class="hero-bio">
-          Robotics and research enthusiast, holding a Master's in Automation Engineering (ÉTS)
-          and a Master's in Mechanical Engineering (UTBM). My work spans kinematic singularities,
-          path planning for serial robot arms, and applied machine learning.
-          Seeking a position in a robotics-related startup.
+      <div class="hero-footer">
+        <p class="hero-bio">Master's student in Automation, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong>, under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies and their implications in the kinematics of the arm.</p>
+        <p class="hero-bio">Throughout my master's, I have been involved in a few other research projects ranging from satellite navigation to materials engineering. I currently contributing to the CHIP project at <strong>McGill Bioresources Lab</strong>, to develop an automatic platform for plant growth data collection, alongside <strong>Mohamed Debbagh</strong>. </p>
+        <p class="hero-bio">I also have hands-on experience in robotics, having developed two microscopic inspection robots for <strong>Canon Production Printing</strong> in the Netherlands under the supervision of Dr. <strong>Karel Kneychen</strong>, as well as personal robotics projects I develop in my spare time.</p>
+        <div class="contact-links contact-links-center">
+          <a class="contact-link pdf-link" href="/cv.pdf" title="CV"><i class="fa-regular fa-file"></i></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/axel-refalo-3b4838228/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="contact-link" href="https://github.com/axelrefalo" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="contact-link" href="https://grabcad.com/axel.refalo-1" target="_blank" title="GrabCAD"><i class="fa-solid fa-cube"></i></a>
+          <a class="contact-link" href="mailto:axel.refalo@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
         </div>
       </div>
     </section>
+
+{/* Education section hidden for now */}
+
+
+    <section>
+      <div class="section-label">Publications</div>
+      <div class="card-list">
+
+        <div class="card-item">
+          <div class="card-media">
+            <img src="/ICRA2026.png" alt="Singularity analysis graphical abstract" class="zoomable" />
+          </div>
+          <div class="card-content">
+            <div class="card-title"><a href="/ICRA2026_poster.pdf" class="pdf-link"><strong>Singularity Analysis of ABB's GoFa 5 Robot Arm</strong></a></div>
+            <div class="card-authors">Refalo, A., Bonev, I., and Gosselin, C.</div>
+            <div class="card-venue">IEEE ICRA 2026</div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-media">
+            <video src="/CHIP.mov" autoplay muted loop playsinline class="zoomable"></video>
+          </div>
+          <div class="card-content">
+            <div class="card-title"><a href="https://github.com/Controlled-Hydroponics-Imaging-Platform" target="_blank"><strong>An Affordable and Open-Source Gantry Framework for Capturing High Resolution Spatiotemporal Plant Growth Data</strong></a></div>
+            <div class="card-authors">Debbagh, M., Refalo, A., et al.</div>
+            <div class="card-venue">In preparation</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Projects</div>
+      <div class="card-list">
+
+        <div class="card-item">
+          <div class="card-media">
+            <video src="/PolarGraffiti.mov" autoplay muted loop playsinline class="zoomable" data-speed="4"></video>
+          </div>
+          <div class="card-content">
+            <div class="card-title"><strong>Cable-Driven Plotter</strong></div>
+            <div class="card-venue">2026</div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-media">
+            <video src="/3DOF.mov" autoplay muted loop playsinline class="zoomable" data-speed="2"></video>
+          </div>
+          <div class="card-content">
+            <div class="card-title"><strong>3-DOF Manipulator</strong></div>
+            <div class="card-venue">2024</div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-media">
+            <img src="/placeholder.svg" alt="Fluid simulator" />
+          </div>
+          <div class="card-content">
+            <div class="card-title"><strong>Fluid Simulator</strong></div>
+            <div class="card-venue">2023</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="" />
+    <video id="lightbox-video" src="" autoplay muted loop playsinline></video>
+  </div>
+
+  <div id="cv-modal" class="cv-modal">
+    <div class="cv-modal-inner">
+      <iframe id="cv-frame" src="" title="CV"></iframe>
+    </div>
   </div>
 </BaseLayout>
 
 <style>
-  .container {
+.container {
     max-width: 780px;
     margin: 0 auto;
     padding: 0 40px;
   }
 
+  section {
+    padding: 20px 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  section:last-child {
+    border-bottom: none;
+  }
+
+  /* ── HERO ── */
   #home {
-    padding: 56px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .hero-top {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .hero-photo {
@@ -56,25 +170,328 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-weight: 700;
     color: #111;
     line-height: 1.2;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .hero-role {
-    font-size: 14px;
+    font-size: 15px;
     color: #888;
-    margin-bottom: 16px;
     font-style: italic;
+  }
+
+
+  .hero-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .hero-bio {
     font-size: 15px;
     color: #333;
-    line-height: 1.8;
-    max-width: 520px;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .hero-bio + .hero-bio {
+    margin-top: 6px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 28px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  /* the vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: #ddd;
+  }
+
+  .timeline-item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* the dot — centered on the line */
+  .timeline-dot {
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #111;
+    flex-shrink: 0;
+  }
+
+  .timeline-content {
+    width: 100%;
+  }
+
+  .timeline-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .timeline-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .timeline-period {
+    font-size: 12px;
+    color: #bbb;
+    flex-shrink: 0;
+  }
+
+  .timeline-sub {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .bio-divider {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    margin: 16px 0;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+
+  .contact-links-center {
+    justify-content: center;
+  }
+
+  .contact-links-center {
+    justify-content: center;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid #111;
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+
+  .contact-link:hover { opacity: 0.5; }
+
+  /* ── CARDS (publications & projects) ── */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .card-media {
+    width: 200px;
+    height: 130px;
+    flex-shrink: 0;
+    background: #f0f0f0;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .card-media img,
+  .card-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-media video {
+    filter: brightness(0.6);
+  }
+
+
+  .card-media img.zoomable {
+    cursor: zoom-in;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open {
+    display: flex;
+  }
+
+  .lightbox img,
+  .lightbox video {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    object-fit: contain;
+  }
+
+  #lightbox-video {
+    display: none;
+  }
+
+  .cv-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .cv-modal.open {
+    display: flex;
+  }
+
+  .cv-modal-inner {
+    width: 75vw;
+    height: 85vh;
+    cursor: default;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+
+  .cv-modal-inner iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 4px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    color: #111;
+    line-height: 1.4;
+  }
+
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-inprep {
+    color: #888;
+  }
+
+  .card-authors {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .card-venue {
+    font-size: 13px;
+    color: #888;
   }
 
   @media (max-width: 600px) {
     .container { padding: 0 20px; }
     #home { flex-direction: column; gap: 24px; }
+    .timeline-content { flex-direction: column; gap: 2px; }
+    .card-item { flex-direction: column; }
+    .card-media { width: 100%; height: 160px; }
   }
 </style>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVideo = document.getElementById('lightbox-video');
+
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxImg.style.display = 'block';
+      lightboxVideo.style.display = 'none';
+      lightboxVideo.src = '';
+      lightbox.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('video.zoomable').forEach(video => {
+    if (video.dataset.speed) video.playbackRate = parseFloat(video.dataset.speed);
+    video.addEventListener('click', () => {
+      lightboxVideo.src = video.src;
+      lightboxVideo.style.display = 'block';
+      lightboxImg.style.display = 'none';
+      lightboxImg.src = '';
+      lightbox.classList.add('open');
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    lightboxVideo.src = '';
+  });
+
+  const cvModal = document.getElementById('cv-modal');
+  const cvFrame = document.getElementById('cv-frame');
+
+  document.querySelectorAll('a.pdf-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      cvFrame.src = link.href;
+      cvModal.classList.add('open');
+    });
+  });
+
+  cvModal.addEventListener('click', (e) => {
+    if (!e.target.closest('.cv-modal-inner')) {
+      cvModal.classList.remove('open');
+      cvFrame.src = '';
+    }
+  });
+</script>

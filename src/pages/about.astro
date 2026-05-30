@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout title="About — Axel Refalo">
   <div class="container">
+
     <section>
       <div class="section-label">About</div>
       <div class="about-text">
@@ -31,6 +32,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
       </div>
     </section>
+
+    <section>
+      <div class="section-label">Get in touch</div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:axel.refalo@gmail.com">Email</a>
+        <a class="contact-link" href="https://github.com/axelrefalo" target="_blank">GitHub</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/axel-refalo-3b4838228/" target="_blank">LinkedIn</a>
+        <a class="contact-link" href="https://grabcad.com/axel.refalo-1" target="_blank">GrabCAD</a>
+        <a class="contact-link" href="/cv.pdf" target="_blank">CV</a>
+      </div>
+    </section>
+
   </div>
 </BaseLayout>
 
@@ -43,6 +56,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   section {
     padding: 56px 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  section:last-child {
+    border-bottom: none;
   }
 
   .section-label {
@@ -63,6 +81,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .about-text p + p {
     margin-top: 16px;
   }
+
+  .contact-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid #111;
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
+  }
+
+  .contact-link:hover { opacity: 0.5; }
 
   @media (max-width: 600px) {
     .container { padding: 0 20px; }

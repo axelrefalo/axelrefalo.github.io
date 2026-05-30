@@ -1,26 +1,7 @@
 ---
 title: Eulerian Fluid Simulator
-description: A real-time fluid simulator based on the Eulerian grid method, implemented in C++.
+description: Real-time 2D fluid simulation based on Navier-Stokes equations, implemented in C++.
 year: 2023
 ---
 
-## Overview
-
-A real-time 2D fluid simulator built from scratch in C++, using the Eulerian (grid-based) formulation of the Navier-Stokes equations.
-
-## Method
-
-The Eulerian approach discretizes the fluid on a fixed grid and advects quantities (velocity, density) through it at each time step. The simulation solves:
-
-$$
-\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u}
-$$
-
-Key steps per frame:
-1. **Advection** — transport velocity and density fields along the current flow
-2. **Diffusion** — apply viscosity via an implicit solver
-3. **Pressure projection** — enforce incompressibility ($\nabla \cdot \mathbf{u} = 0$)
-
-## Implementation
-
-Written entirely in C++ with a focus on performance. The pressure solve uses a Gauss-Seidel iterative solver on the divergence field.
+Coming soon.

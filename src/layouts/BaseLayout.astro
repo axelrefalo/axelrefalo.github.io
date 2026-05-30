@@ -12,17 +12,46 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{title}</title>
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    @font-face {
+      font-family: 'Charter';
+      src: url('/fonts/Charter-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Charter';
+      src: url('/fonts/Charter-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Charter';
+      src: url('/fonts/Charter-Italic.otf') format('opentype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Charter';
+      src: url('/fonts/Charter-BoldItalic.otf') format('opentype');
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background: #fff;
       color: #111;
-      font-family: 'Libre Baskerville', Georgia, serif;
+      font-family: 'Charter', Georgia, serif;
       min-height: 100vh;
     }
 
@@ -53,10 +82,10 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     }
 
     .nav-links a {
-      font-size: 13px;
+      font-size: 16px;
       color: #666;
       text-decoration: none;
-      font-family: 'Libre Baskerville', Georgia, serif;
+      font-family: 'Charter', Georgia, serif;
       transition: color 0.15s;
     }
 
@@ -65,16 +94,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
       color: #111;
     }
 
-    footer {
-      padding: 24px 40px;
-      font-size: 11px;
-      color: #bbb;
-      font-style: italic;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
       nav { padding: 14px 20px; flex-direction: column; gap: 12px; }
       .nav-links { gap: 18px; }
       footer { padding: 20px; }
@@ -83,20 +103,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 </head>
 <body>
 
-  <nav>
-    <a class="nav-logo" href="/">Axel Refalo</a>
-    <ul class="nav-links">
-      <li><a href="/" class={path === "/" ? "active" : ""}>Home</a></li>
-      <li><a href="/projects" class={path.startsWith("/projects") ? "active" : ""}>Projects</a></li>
-      <li><a href="/publications" class={path === "/publications" ? "active" : ""}>Publications</a></li>
-      <li><a href="/about" class={path === "/about" ? "active" : ""}>About</a></li>
-      <li><a href="/contact" class={path === "/contact" ? "active" : ""}>Contact</a></li>
-    </ul>
-  </nav>
-
   <slot />
-
-  <footer>© 2025 Axel Refalo — Montréal, QC</footer>
 
 </body>
 </html>

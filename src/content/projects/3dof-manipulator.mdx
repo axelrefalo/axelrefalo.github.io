@@ -1,25 +1,7 @@
 ---
 title: 3-DOF Manipulator with Parallelogram Mechanism
-description: A three-degree-of-freedom robot arm for pick-and-place tasks — forward and inverse kinematics derived analytically and implemented.
+description: Pick-and-place robot arm — forward and inverse kinematics derived analytically and implemented.
 year: 2024
 ---
 
-## Overview
-
-A three-degree-of-freedom manipulator built around a parallelogram mechanism, designed for pick-and-place tasks. The parallelogram linkage keeps the end-effector orientation constant throughout the workspace, simplifying the kinematic model.
-
-## Kinematics
-
-Both forward and inverse kinematics were derived fully analytically — no numerical methods. The closed-form solution allows real-time trajectory planning with guaranteed solutions within the workspace.
-
-$$
-\mathbf{p} = f(\theta_1, \theta_2, \theta_3)
-$$
-
-The inverse kinematics maps a desired end-effector position back to joint angles, handling the multiple solution branches inherent to the parallelogram geometry.
-
-## Implementation
-
-- Mechanical design and fabrication (additive manufacturing + laser cutting)
-- Electronics: stepper motors, controller boards
-- Control: trajectory interpolation and execution in C++
+Coming soon.
