@@ -39,7 +39,6 @@ const education = [
 
 {/* Education section hidden for now */}
 
-
     <section>
       <div class="section-label">Publications</div>
       <div class="card-list">
@@ -57,7 +56,7 @@ const education = [
 
         <div class="card-item">
           <div class="card-media">
-            <video src="/CHIP.mov" autoplay muted loop playsinline class="zoomable"></video>
+            <video src="/CHIP.mov" autoplay muted loop playsinline class="zoomable dim"></video>
           </div>
           <div class="card-content">
             <div class="card-title"><a href="https://github.com/Controlled-Hydroponics-Imaging-Platform" target="_blank"><strong>An Affordable and Open-Source Gantry Framework for Capturing High Resolution Spatiotemporal Plant Growth Data</strong></a></div>
@@ -65,6 +64,48 @@ const education = [
             <div class="card-venue">In preparation</div>
           </div>
         </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Coursework</div>
+      <div class="card-list">
+
+        <div class="card-item">
+          <div class="card-media">
+            <img src="/ML.gif" alt="Applied Machine Learning" class="zoomable" />
+          </div>
+          <div class="card-content">
+            <div class="card-title"><a href="https://github.com/axelrefalo/applied-machine-learning-w2025" target="_blank"><strong>Applied Machine Learning</strong></a></div>
+            <div class="card-venue">McGill University</div>
+            <div class="card-venue">2025</div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-media">
+            <video src="/KinovaGen3.mp4" autoplay muted loop playsinline class="zoomable"></video>
+          </div>
+          <div class="card-content">
+            <div class="card-title"><a href="https://github.com/axelrefalo/applied-robotics-f2024" target="_blank"><strong>Applied Robotics</strong></a></div>
+            <div class="card-venue">McGill University</div>
+            <div class="card-venue">2024</div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-media">
+            <video src="/MRAC.mp4" autoplay muted loop playsinline class="zoomable"></video>
+          </div>
+          <div class="card-content">
+            <div class="card-title"><strong>Model Reference Adaptive Control Quadrotor</strong></div>
+            <div class="card-venue">École de Technologie Supérieure</div>
+            <div class="card-venue">2024</div>
+          </div>
+        </div>
+
+{/* Truss Simulator hidden for now */}
 
       </div>
     </section>
@@ -93,15 +134,7 @@ const education = [
           </div>
         </div>
 
-        <div class="card-item">
-          <div class="card-media">
-            <img src="/placeholder.svg" alt="Fluid simulator" />
-          </div>
-          <div class="card-content">
-            <div class="card-title"><strong>Fluid Simulator</strong></div>
-            <div class="card-venue">2023</div>
-          </div>
-        </div>
+{/* Fluid Simulator hidden for now */}
 
       </div>
     </section>
@@ -337,7 +370,7 @@ const education = [
     object-fit: cover;
   }
 
-  .card-media video {
+  .card-media video.dim {
     filter: brightness(0.6);
   }
 
