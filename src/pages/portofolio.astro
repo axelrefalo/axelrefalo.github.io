@@ -39,6 +39,12 @@ const publications = [
     media:   { type: "video", src: "/media/publications/plant-growth.mov" },
     link:    { href: "https://github.com/Controlled-Hydroponics-Imaging-Platform", type: "external" },
   },
+  {
+    title:   "IKDH, an Inverse Kinematics solver based on Denavit and Hartenberg standard convention",
+    venue:   "2026",
+    media:   { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
+    link:    { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external" },
+  },
 ];
 
 // ── COURSEWORK ───────────────────────────────────────────────────────────────
@@ -65,14 +71,14 @@ const coursework = [
     link:        { href: "/media/coursework/rapport-mrac-quadrotor.pdf", type: "pdf" },
   },
   {
-    title:       "ETA 6497 Movement",
+    title:       "ETA6497 Watch Movement",
     institution: "University of Technology of Belfort-Montbéliard",
-    year:        2021,
+    year:        2022,
     media:       { type: "image", src: "/media/coursework/eta6497.png", zoomable: true },
     link:        { href: "/media/coursework/rapport-eta6497.pdf", type: "pdf" },
   },
   {
-    title:       "Truss Simulator",
+    title:       "Finite Element Method Applied to Truss",
     institution: "University of Technology of Belfort-Montbéliard",
     year:        2022,
     media:       { type: "image", src: "/media/coursework/truss-simulator.png", zoomable: true },
@@ -82,12 +88,6 @@ const coursework = [
 
 // ── PROJECTS ─────────────────────────────────────────────────────────────────
 const projects = [
-  {
-    title: "IKDH Library",
-    year:  2025,
-    media: { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
-    link:  { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external" },
-  },
   {
     title: "Cable-Driven Plotter",
     year:  2026,
@@ -135,7 +135,7 @@ const projects = [
 
     <!-- PUBLICATIONS -->
     <section>
-      <div class="section-label">Publications</div>
+      <div class="section-label">Research</div>
       <div class="card-list">
         {publications.map((item) => (
           <div class="card-item">
