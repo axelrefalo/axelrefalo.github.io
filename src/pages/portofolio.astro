@@ -36,7 +36,7 @@ const publications = [
     title:   "An Affordable and Open-Source Gantry Framework for Capturing High Resolution Spatiotemporal Plant Growth Data",
     authors: "Debbagh, M., Refalo, A., et al.",
     venue:   "In preparation",
-    media:   { type: "video", src: "/media/publications/plant-growth.mov", dim: true },
+    media:   { type: "video", src: "/media/publications/plant-growth.mov" },
     link:    { href: "https://github.com/Controlled-Hydroponics-Imaging-Platform", type: "external" },
   },
 ];
@@ -47,7 +47,7 @@ const coursework = [
     title:       "Applied Machine Learning",
     institution: "McGill University",
     year:        2025,
-    media:       { type: "image", src: "/media/coursework/applied-ml.gif", zoomable: true },
+    media:       { type: "image", src: "/media/coursework/AttentionIsAllYouNeed.png", zoomable: true, fit: "contain" },
     link:        { href: "https://github.com/axelrefalo/applied-machine-learning-w2025", type: "external" },
   },
   {
@@ -62,6 +62,21 @@ const coursework = [
     institution: "École de Technologie Supérieure",
     year:        2024,
     media:       { type: "video", src: "/media/coursework/mrac-quadrotor.mp4" },
+    link:        { href: "/media/coursework/rapport-mrac-quadrotor.pdf", type: "pdf" },
+  },
+  {
+    title:       "ETA 6497 Movement",
+    institution: "University of Technology of Belfort-Montbéliard",
+    year:        2021,
+    media:       { type: "image", src: "/media/coursework/eta6497.png", zoomable: true },
+    link:        { href: "/media/coursework/rapport-eta6497.pdf", type: "pdf" },
+  },
+  {
+    title:       "Truss Simulator",
+    institution: "University of Technology of Belfort-Montbéliard",
+    year:        2022,
+    media:       { type: "image", src: "/media/coursework/truss-simulator.png", zoomable: true },
+    link:        { href: "/media/coursework/rapport-truss-simulator.pdf", type: "pdf" },
   },
 ];
 
@@ -71,7 +86,7 @@ const projects = [
     title: "IKDH Library",
     year:  2025,
     media: { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
-    link:  { href: "https://github.com/Lab-CORO/IKDH", type: "external" },
+    link:  { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external" },
   },
   {
     title: "Cable-Driven Plotter",
@@ -126,12 +141,12 @@ const projects = [
           <div class="card-item">
             <div class="card-media">
               {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={item.media.zoomable ? "zoomable" : ""} />
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
               ) : (
                 <video
                   src={item.media.src}
                   autoplay muted loop playsinline
-                  class={`zoomable${item.media.dim ? " dim" : ""}`}
+                  class="zoomable"
                   data-speed={item.media.speed}
                 ></video>
               )}
@@ -164,12 +179,12 @@ const projects = [
           <div class="card-item">
             <div class="card-media">
               {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={item.media.zoomable ? "zoomable" : ""} />
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
               ) : (
                 <video
                   src={item.media.src}
                   autoplay muted loop playsinline
-                  class={`zoomable${item.media.dim ? " dim" : ""}`}
+                  class="zoomable"
                   data-speed={item.media.speed}
                 ></video>
               )}
@@ -177,7 +192,11 @@ const projects = [
             <div class="card-content">
               <div class="card-title">
                 {item.link ? (
-                  <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+                  item.link.type === "pdf" ? (
+                    <a href={item.link.href} class="pdf-link"><strong>{item.title}</strong></a>
+                  ) : (
+                    <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+                  )
                 ) : (
                   <strong>{item.title}</strong>
                 )}
@@ -198,12 +217,12 @@ const projects = [
           <div class="card-item">
             <div class="card-media">
               {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={item.media.zoomable ? "zoomable" : ""} />
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
               ) : (
                 <video
                   src={item.media.src}
                   autoplay muted loop playsinline
-                  class={`zoomable${item.media.dim ? " dim" : ""}`}
+                  class="zoomable"
                   data-speed={item.media.speed}
                 ></video>
               )}
@@ -323,10 +342,11 @@ const projects = [
 
   /* ── SECTION LABEL ── */
   .section-label {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: #aaa;
+    color: #555;
     margin-bottom: 28px;
   }
 
@@ -381,12 +401,13 @@ const projects = [
     object-fit: cover;
   }
 
-  .card-media video.dim {
-    filter: brightness(0.6);
-  }
-
   .card-media img.zoomable {
     cursor: zoom-in;
+  }
+
+  .card-media img.contain {
+    object-fit: contain;
+    background: #fff;
   }
 
   .card-content {
