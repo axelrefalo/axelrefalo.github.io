@@ -12,7 +12,7 @@ const hero = {
   bio: [
     `Master's student in Automation, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong>, under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies and their implications in the kinematics of the arm.`,
     `Throughout my master's, I have been involved in a few other research projects ranging from satellite navigation to materials engineering. I currently contributing to the CHIP project at <strong>McGill Bioresources Lab</strong>, to develop an automatic platform for plant growth data collection, alongside <strong>Mohamed Debbagh</strong>.`,
-    `I also have hands-on experience in robotics, having developed two microscopic inspection robots for <strong>Canon Production Printing</strong> in the Netherlands under the supervision of Dr. <strong>Karel Kneychen</strong>, as well as personal robotics projects I develop in my spare time.`,
+    `I also have hands-on experience in robotics, having developed two microscopic inspection robots for <strong>Canon Production Printing</strong> in the Netherlands under the supervision of Dr. <strong>Karel Kneychen</strong>, as well as personal robotics projects I develop in my spare time. You can find my resume, code, designs, and contact below.`,
   ],
   links: [
     { label: "CV",       href: "/cv.pdf",                                              icon: "fa-regular fa-file",       type: "pdf"      },
@@ -44,6 +44,7 @@ const publications = [
     venue:   "2026",
     media:   { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
     link:    { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external" },
+    description: "Inverse kinematics solver that outputs all the inverse kinematics solutions for a six revolute personalized robot arm and enables singularity analysis.",
   },
 ];
 
@@ -55,6 +56,7 @@ const coursework = [
     year:        2025,
     media:       { type: "image", src: "/media/coursework/AttentionIsAllYouNeed.png", zoomable: true, fit: "contain" },
     link:        { href: "https://github.com/axelrefalo/applied-machine-learning-w2025", type: "external" },
+    description: "Applied projects for pattern recognition and classification in Python involving tools like Linear and Logistic Regression, K-Nearest Neighbors, Decision Trees, Convolutional Neural Networks, Deep Neural Networks, and Large Language Models.",
   },
   {
     title:       "Applied Robotics",
@@ -62,13 +64,15 @@ const coursework = [
     year:        2024,
     media:       { type: "video", src: "/media/coursework/applied-robotics.mp4" },
     link:        { href: "https://github.com/axelrefalo/applied-robotics-f2024", type: "external" },
+    description: "Implemented controller packages on ROS1 with Gazebo in C++ for dynamic and kinematic control of the Kinova Gen3, a redundant robotic arm.",
   },
   {
-    title:       "Model Reference Adaptive Control Quadrotor",
+    title:       "Quadrotor Control",
     institution: "École de Technologie Supérieure",
     year:        2024,
     media:       { type: "video", src: "/media/coursework/mrac-quadrotor.mp4" },
     link:        { href: "/media/coursework/rapport-mrac-quadrotor.pdf", type: "pdf" },
+    description: "Design and implemented a Model Reference Adaptive Control for a quadrotor on MATLAB.",
   },
   {
     title:       "Watch Movement",
@@ -76,6 +80,7 @@ const coursework = [
     year:        2023,
     media:       { type: "image", src: "/media/coursework/eta6497.png", zoomable: true },
     link:        { href: "https://grabcad.com/library/eta6497-1", type: "external" },
+    description: "Replication of the ETA6497, a Swiss watch mechanism, design of parametric gears with a cycloidal profile on CATIA V5.",
   },
   {
     title:       "Truss Simulator",
@@ -83,6 +88,7 @@ const coursework = [
     year:        2022,
     media:       { type: "image", src: "/media/projects/truss-simulator.png", zoomable: true },
     link:        { href: "https://axelrefalo.github.io/Projet-MN41/web/truss-simulator.html", type: "external" },
+    description: "Mechanical truss simulator using finite element methods in C#.",
   },
 ];
 
@@ -92,28 +98,33 @@ const projects = [
     title: "Cable-Driven Plotter",
     year:  2026,
     media: { type: "image", src: "/media/projects/PolarGraffiti.png", zoomable: true, fit: "contain" },
+    description: "Two-cable-driven parallel plotter for spray painting: dynamic model derived analytically, validated and implemented (work in progress).",
   },
   {
     title: "Home Server",
     year:  2025,
     media: { type: "image", src: "/media/projects/home-server.png", zoomable: true },
+    description: "Home lab server built and accessed remotely using Unix Shell.",
   },
   {
     title: "3-DOF Manipulator",
     year:  2024,
     media: { type: "image", src: "/media/projects/sacha.png", zoomable: true, fit: "contain" },
+    description: "Three-degree-of-freedom manipulator with parallelogram mechanism, for pick-and-place tasks, forward and inverse kinematics derived analytically and implemented.",
   },
   {
     title: "Puzzle Grid Solver",
     year:  2023,
     media: { type: "image", src: "/media/projects/puzzle-grid-solver.png", zoomable: true, fit: "contain" },
     link:  { href: "https://axelrefalo.github.io/puzzle-grid-solver/", type: "external" },
+    description: "Algorithms to solve complex grid puzzles: sudoku, kakuro, killer sudoku, suguru, using a backtracking method in C++.",
   },
   {
     title: "Fluid Simulator",
     year:  2023,
     media: { type: "video", src: "/media/projects/fluid-simulator.mov" },
     link:  { href: "https://axelrefalo.github.io/eulerian-fluid-simulator/web/fluid_simulator.html", type: "external" },
+    description: "Simple Eulerian fluid simulator in C++ with the SFML library.",
   },
 ];
 ---
@@ -145,6 +156,13 @@ const projects = [
               <i class={link.icon}></i>
             </a>
           ))}
+        </div>
+        <div class="text-separator">
+          <svg viewBox="0 0 300 20" class="separator-svg" aria-hidden="true">
+            <path d="M0 10 Q65 10 136 7 L136 13 Q65 10 0 10 Z" />
+            <circle cx="150" cy="10" r="4" />
+            <path d="M300 10 Q235 10 164 7 L164 13 Q235 10 300 10 Z" />
+          </svg>
         </div>
       </div>
     </section>
@@ -185,6 +203,7 @@ const projects = [
                     <strong>{item.title}</strong>
                   )}
                 </div>
+                {item.description && <div class="card-description">{item.description}</div>}
                 {item.authors && <div class="card-authors">{item.authors}</div>}
                 <div class="card-venue">{item.venue}</div>
               </div>
@@ -221,6 +240,7 @@ const projects = [
                     <strong>{item.title}</strong>
                   )}
                 </div>
+                {item.description && <div class="card-description">{item.description}</div>}
                 <div class="card-venue">{item.institution}</div>
                 <div class="card-venue">{item.year}</div>
               </div>
@@ -253,6 +273,7 @@ const projects = [
                     <strong>{item.title}</strong>
                   )}
                 </div>
+                {item.description && <div class="card-description">{item.description}</div>}
                 <div class="card-venue">{item.year}</div>
               </div>
             </div>
@@ -302,6 +323,8 @@ const projects = [
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: none;
   }
 
   .hero-top {
@@ -358,38 +381,40 @@ const projects = [
   /* ── SECTION TABS ── */
   .section-tabs {
     display: flex;
-    align-items: flex-start;
-    padding-bottom: 10px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid #e8e8e8;
+    width: fit-content;
+    margin: 0 auto 28px;
+    padding: 4px;
+    background: #f2f2f2;
+    border-radius: 8px;
   }
 
   .tab-btn {
     display: block;
-    flex: 1;
-    text-align: center;
     background: none;
     border: none;
-    padding: 0;
+    border-radius: 6px;
+    padding: 7px 18px;
     margin: 0;
     font-family: inherit;
     font-size: 13px;
     line-height: 1;
-    font-weight: 400;
-    letter-spacing: 1.5px;
+    font-weight: 500;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: #aaa;
+    color: #888;
     cursor: pointer;
-    transition: color 0.15s;
+    transition: color 0.15s, background 0.15s;
   }
 
   .tab-btn:hover {
-    color: #555;
+    color: #333;
   }
 
   .tab-btn.active {
     font-weight: 700;
     color: #111;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
 
   /* ── CONTACT LINKS ── */
@@ -413,6 +438,19 @@ const projects = [
   }
 
   .contact-link:hover { opacity: 0.5; }
+
+  /* ── TEXT SEPARATOR ── */
+  .text-separator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .separator-svg {
+    width: 340px;
+    height: 24px;
+    fill: #ccc;
+  }
 
   /* ── CARDS ── */
   .card-list {
@@ -476,8 +514,17 @@ const projects = [
   }
 
   .card-venue {
-    font-size: 13px;
-    color: #888;
+    font-size: 12px;
+    color: #999;
+  }
+
+  .card-description {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    text-align: justify;
+    margin-top: 4px;
+    margin-bottom: 2px;
   }
 
   /* ── LIGHTBOX ── */
