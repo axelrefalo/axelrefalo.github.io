@@ -109,11 +109,16 @@ const projects = [
     media: { type: "image", src: "/media/projects/puzzle-grid-solver.png", zoomable: true, fit: "contain" },
     link:  { href: "https://axelrefalo.github.io/puzzle-grid-solver/", type: "external" },
   },
+  {
+    title: "Fluid Simulator",
+    year:  2023,
+    media: { type: "video", src: "/media/projects/fluid-simulator.mov" },
+    link:  { href: "https://axelrefalo.github.io/Projet-MN41/web/truss-simulator.html", type: "external" },
+  },
 ];
 ---
 
 <BaseLayout>
-  <div class="wip-banner">Work in progress</div>
   <div class="container">
 
     <!-- HERO -->
@@ -144,112 +149,115 @@ const projects = [
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
-    <section>
-      <div class="section-label">Research</div>
-      <div class="card-list">
-        {publications.map((item) => (
-          <div class="card-item">
-            <div class="card-media">
-              {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-              ) : (
-                <video
-                  src={item.media.src}
-                  autoplay muted loop playsinline
-                  class="zoomable"
-                  data-speed={item.media.speed}
-                ></video>
-              )}
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                {item.link ? (
-                  item.link.type === "pdf" ? (
-                    <a href={item.link.href} class="pdf-link"><strong>{item.title}</strong></a>
-                  ) : (
-                    <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
-                  )
-                ) : (
-                  <strong>{item.title}</strong>
-                )}
-              </div>
-              {item.authors && <div class="card-authors">{item.authors}</div>}
-              <div class="card-venue">{item.venue}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    <!-- SECTIONS -->
+    <section class="tabs-section">
+      <nav class="section-tabs">
+        <button type="button" class="tab-btn active" data-tab="research">Research</button>
+        <button type="button" class="tab-btn" data-tab="coursework">Coursework</button>
+        <button type="button" class="tab-btn" data-tab="projects">Projects</button>
+      </nav>
 
-    <!-- COURSEWORK -->
-    <section>
-      <div class="section-label">Coursework</div>
-      <div class="card-list">
-        {coursework.map((item) => (
-          <div class="card-item">
-            <div class="card-media">
-              {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-              ) : (
-                <video
-                  src={item.media.src}
-                  autoplay muted loop playsinline
-                  class="zoomable"
-                  data-speed={item.media.speed}
-                ></video>
-              )}
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                {item.link ? (
-                  item.link.type === "pdf" ? (
-                    <a href={item.link.href} class="pdf-link"><strong>{item.title}</strong></a>
+      <div class="tab-panel" data-panel="research">
+        <div class="card-list">
+          {publications.map((item) => (
+            <div class="card-item">
+              <div class="card-media">
+                {item.media.type === "image" ? (
+                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+                ) : (
+                  <video
+                    src={item.media.src}
+                    autoplay muted loop playsinline
+                    class="zoomable"
+                    data-speed={item.media.speed}
+                  ></video>
+                )}
+              </div>
+              <div class="card-content">
+                <div class="card-title">
+                  {item.link ? (
+                    item.link.type === "pdf" ? (
+                      <a href={item.link.href} class="pdf-link"><strong>{item.title}</strong></a>
+                    ) : (
+                      <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+                    )
                   ) : (
-                    <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
-                  )
-                ) : (
-                  <strong>{item.title}</strong>
-                )}
+                    <strong>{item.title}</strong>
+                  )}
+                </div>
+                {item.authors && <div class="card-authors">{item.authors}</div>}
+                <div class="card-venue">{item.venue}</div>
               </div>
-              <div class="card-venue">{item.institution}</div>
-              <div class="card-venue">{item.year}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section>
-      <div class="section-label">Projects</div>
-      <div class="card-list">
-        {projects.map((item) => (
-          <div class="card-item">
-            <div class="card-media">
-              {item.media.type === "image" ? (
-                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-              ) : (
-                <video
-                  src={item.media.src}
-                  autoplay muted loop playsinline
-                  class="zoomable"
-                  data-speed={item.media.speed}
-                ></video>
-              )}
-            </div>
-            <div class="card-content">
-              <div class="card-title">
-                {item.link ? (
-                  <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+      <div class="tab-panel" data-panel="coursework" hidden>
+        <div class="card-list">
+          {coursework.map((item) => (
+            <div class="card-item">
+              <div class="card-media">
+                {item.media.type === "image" ? (
+                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
                 ) : (
-                  <strong>{item.title}</strong>
+                  <video
+                    src={item.media.src}
+                    autoplay muted loop playsinline
+                    class="zoomable"
+                    data-speed={item.media.speed}
+                  ></video>
                 )}
               </div>
-              <div class="card-venue">{item.year}</div>
+              <div class="card-content">
+                <div class="card-title">
+                  {item.link ? (
+                    item.link.type === "pdf" ? (
+                      <a href={item.link.href} class="pdf-link"><strong>{item.title}</strong></a>
+                    ) : (
+                      <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+                    )
+                  ) : (
+                    <strong>{item.title}</strong>
+                  )}
+                </div>
+                <div class="card-venue">{item.institution}</div>
+                <div class="card-venue">{item.year}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="projects" hidden>
+        <div class="card-list">
+          {projects.map((item) => (
+            <div class="card-item">
+              <div class="card-media">
+                {item.media.type === "image" ? (
+                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+                ) : (
+                  <video
+                    src={item.media.src}
+                    autoplay muted loop playsinline
+                    class="zoomable"
+                    data-speed={item.media.speed}
+                  ></video>
+                )}
+              </div>
+              <div class="card-content">
+                <div class="card-title">
+                  {item.link ? (
+                    <a href={item.link.href} target="_blank"><strong>{item.title}</strong></a>
+                  ) : (
+                    <strong>{item.title}</strong>
+                  )}
+                </div>
+                <div class="card-venue">{item.year}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -268,14 +276,6 @@ const projects = [
 </BaseLayout>
 
 <style>
-  .wip-banner {
-    text-align: center;
-    padding: 8px;
-    font-size: 12px;
-    font-style: italic;
-    color: #aaa;
-    border-bottom: 1px solid #e8e8e8;
-  }
 
   .container {
     max-width: 780px;
@@ -290,6 +290,10 @@ const projects = [
 
   section:last-child {
     border-bottom: none;
+  }
+
+  .tabs-section {
+    padding-top: 12px;
   }
 
   /* ── HERO ── */
@@ -351,14 +355,41 @@ const projects = [
     margin-top: 6px;
   }
 
-  /* ── SECTION LABEL ── */
-  .section-label {
+  /* ── SECTION TABS ── */
+  .section-tabs {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .tab-btn {
+    display: block;
+    flex: 1;
+    text-align: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
     font-size: 13px;
-    font-weight: 700;
+    line-height: 1;
+    font-weight: 400;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .tab-btn:hover {
     color: #555;
-    margin-bottom: 28px;
+  }
+
+  .tab-btn.active {
+    font-weight: 700;
+    color: #111;
   }
 
   /* ── CONTACT LINKS ── */
@@ -559,5 +590,17 @@ const projects = [
       cvModal.classList.remove('open');
       cvFrame.src = '';
     }
+  });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach((b) => b.classList.remove('active'));
+      tabPanels.forEach((p) => { p.hidden = true; });
+      btn.classList.add('active');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).hidden = false;
+    });
   });
 </script>
