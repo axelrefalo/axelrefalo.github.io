@@ -9,10 +9,10 @@ const hero = {
     `Master and Bachelor of <strong>Mechanical Engineering</strong> at University of Technology of Belfort-Montbéliard`,
   ],
   bio: [
-    `Master's student in Automation, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong>, under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies and their implications in the kinematics of the arm.`,
-    `Throughout my master's, I have been involved in a few other research projects ranging from satellite navigation to materials engineering. I currently contribute to the HORTIS project at <strong>McGill Bioresources Lab</strong>, to develop an automatic platform for plant growth data collection, alongside <strong>Mohamed Debbagh</strong>.`,
-    `My hands-on robotics experience includes developing two microscopic inspection robots for <strong>Canon Production Printing R&D</strong> in the Netherlands under Dr. <strong>Karel Knechten</strong>'s supervision.`,
-    `Beyond this, I actively develop personal robotics projects in my spare time.`,
+    `Master's student in <strong>Automation Engineering</strong>, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong> (Canada), under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies, the arrangement of the joint axes, and their implications on the industrial performance of the arms. With unconventional and custom-built robots, the question of controllability at the design stage really matters to industrial robot manufacturers.`,
+    `Alongside the thesis I have worked in collaboration with other laboratories. I implemented a Kalman filter for positioning from satellite signals of opportunity, and a tomographic reconstruction pipeline for synchrotron scans of concrete, both at <strong>École de technologie supérieure</strong>. And on <strong>HORTIS</strong> at the <strong>McGill Bioresource Engineering Lab</strong>, we designed and built the robotic gantry that captures the plant growth data.`,
+    `Before Montréal I received an engineering degree in <strong>Mechanical Engineering</strong>, specializing in mechatronics, from the <strong>University of Technology of Belfort-Montbéliard</strong> (France), and did an internship at <strong>Canon Production Printing R&D</strong> (Netherlands) under the supervision of Dr. <strong>Karel Knechten</strong>. It introduced me to robotics research, developing two Cartesian robots for microscopic inspection of print heads.`,
+    `Beyond this, I actively develop design, hardware and software for robotics projects, for the challenge and out of curiosity.`,
   ],
   links: [
     { label: "CV",       href: "/cv.pdf",                                              icon: "fa-regular fa-file",       type: "pdf"      },
@@ -716,13 +716,37 @@ const projects = [
 
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
+  const tabOrder = Array.from(tabBtns).map((btn) => btn.dataset.tab);
+
+  function selectTab(tabName) {
+    tabBtns.forEach((b) => b.classList.toggle('active', b.dataset.tab === tabName));
+    tabPanels.forEach((p) => { p.hidden = p.dataset.panel !== tabName; });
+  }
 
   tabBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach((b) => b.classList.remove('active'));
-      tabPanels.forEach((p) => { p.hidden = true; });
-      btn.classList.add('active');
-      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).hidden = false;
-    });
+    btn.addEventListener('click', () => selectTab(btn.dataset.tab));
   });
+
+  const tabsSection = document.querySelector('.tabs-section');
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  tabsSection.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  tabsSection.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+    const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
+    const currentIndex = tabOrder.indexOf(activeTab);
+    const nextIndex = dx < 0
+      ? Math.min(currentIndex + 1, tabOrder.length - 1)
+      : Math.max(currentIndex - 1, 0);
+
+    if (nextIndex !== currentIndex) selectTab(tabOrder[nextIndex]);
+  }, { passive: true });
 </script>
