@@ -10,7 +10,7 @@ const hero = {
   ],
   bio: [
     `Master's student in Automation, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong>, under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies and their implications in the kinematics of the arm.`,
-    `Throughout my master's, I have been involved in a few other research projects ranging from satellite navigation to materials engineering. I currently contributing to the CHIP project at <strong>McGill Bioresources Lab</strong>, to develop an automatic platform for plant growth data collection, alongside <strong>Mohamed Debbagh</strong>.`,
+    `Throughout my master's, I have been involved in a few other research projects ranging from satellite navigation to materials engineering. I currently contributing to the HORTIS project at <strong>McGill Bioresources Lab</strong>, to develop an automatic platform for plant growth data collection, alongside <strong>Mohamed Debbagh</strong>.`,
     `My hands-on robotics experience includes developing two microscopic inspection robots for <strong>Canon Production Printing R&D</strong> in the Netherlands under Dr. <strong>Karel Kneychen</strong>'s supervision.`,
     `Beyond this, I actively develop personal robotics projects in my spare time.`,
   ],
@@ -119,6 +119,7 @@ const projects = [
     title: "Home Server",
     year:  2025,
     media: { type: "image", src: "/media/projects/home-server.png", zoomable: true },
+    link:  { href: "https://grabcad.com/library/rpi5-nas-case-1", type: "external", icon: "fa-solid fa-cube" },
     description: "Home lab server built and accessed remotely using Unix Shell.",
     tag:   "Home Server",
   },
@@ -210,22 +211,22 @@ const projects = [
                 )}
               </div>
               <div class="card-content">
-                {item.tag && <div class="card-tag">{item.tag}</div>}
+                <div class="card-top-row">
+                  {item.tag && <div class="card-tag">{item.tag}</div>}
+                  {item.link && (
+                    <a
+                      class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
+                      href={item.link.href}
+                      target={item.link.type === "pdf" ? undefined : "_blank"}
+                    >
+                      <i class={item.link.icon}></i>
+                    </a>
+                  )}
+                </div>
                 <div class="card-title"><strong>{item.title}</strong></div>
                 {item.description && <div class="card-description">{item.description}</div>}
                 {item.authors && <div class="card-authors">{item.authors}</div>}
                 <div class="card-venue">{item.venue}</div>
-              </div>
-              <div class="card-link-col">
-                {item.link && (
-                  <a
-                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
-                    href={item.link.href}
-                    target={item.link.type === "pdf" ? undefined : "_blank"}
-                  >
-                    <i class={item.link.icon}></i>
-                  </a>
-                )}
               </div>
             </div>
           ))}
@@ -249,16 +250,16 @@ const projects = [
                 )}
               </div>
               <div class="card-content">
-                {item.tag && <div class="card-tag">{item.tag}</div>}
+                <div class="card-top-row">
+                  {item.tag && <div class="card-tag">{item.tag}</div>}
+                  {item.link && (
+                    <a class="card-link-icon" href={item.link.href} target="_blank">
+                      <i class={item.link.icon}></i>
+                    </a>
+                  )}
+                </div>
                 {item.description && <div class="card-description">{item.description}</div>}
                 <div class="card-venue">{item.year}</div>
-              </div>
-              <div class="card-link-col">
-                {item.link && (
-                  <a class="card-link-icon" href={item.link.href} target="_blank">
-                    <i class={item.link.icon}></i>
-                  </a>
-                )}
               </div>
             </div>
           ))}
@@ -282,21 +283,21 @@ const projects = [
                 )}
               </div>
               <div class="card-content">
-                <div class="card-tag">{item.institution}</div>
+                <div class="card-top-row">
+                  <div class="card-tag">{item.institution}</div>
+                  {item.link && (
+                    <a
+                      class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
+                      href={item.link.href}
+                      target={item.link.type === "pdf" ? undefined : "_blank"}
+                    >
+                      <i class={item.link.icon}></i>
+                    </a>
+                  )}
+                </div>
                 <div class="card-title"><strong>{item.title}</strong></div>
                 {item.description && <div class="card-description">{item.description}</div>}
                 <div class="card-venue">{item.year}</div>
-              </div>
-              <div class="card-link-col">
-                {item.link && (
-                  <a
-                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
-                    href={item.link.href}
-                    target={item.link.type === "pdf" ? undefined : "_blank"}
-                  >
-                    <i class={item.link.icon}></i>
-                  </a>
-                )}
               </div>
             </div>
           ))}
@@ -521,17 +522,26 @@ const projects = [
     padding-top: 4px;
   }
 
+  .card-top-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
   .card-tag {
-    display: inline-block;
-    font-size: 10px;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 28px;
+    padding: 0 10px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #666;
     background: #f0f0f0;
-    border-radius: 2px;
-    padding: 3px 7px;
-    margin-bottom: 6px;
+    border-radius: 4px;
   }
 
   .card-title {
@@ -540,17 +550,19 @@ const projects = [
     line-height: 1.4;
   }
 
-  .card-link-col {
-    width: 18px;
-    flex-shrink: 0;
-  }
-
   .card-link-icon {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-left: auto;
+    flex-shrink: 0;
     color: #111;
-    font-size: 12px;
-    border-bottom: 1px solid #111;
-    padding-bottom: 1px;
+    font-size: 13px;
+    text-decoration: none;
+    background: #f0f0f0;
+    border-radius: 4px;
     transition: opacity 0.15s;
   }
 
