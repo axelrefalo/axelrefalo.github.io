@@ -5,8 +5,8 @@ const hero = {
   photo: "/profil.png",
   name: "Axel Refalo",
   roles: [
-    `M.A.Sc in <strong>Automation Engineering</strong> from École de Technologie Supérieure`,
-    `B.Eng. and M.Eng. in <strong>Mechanical Engineering</strong> from University of Technology of Belfort`,
+    `Master in <strong>Automation Engineering</strong> at École de Technologie Supérieure`,
+    `Master and Bachelor of <strong>Mechanical Engineering</strong> at University of Technology of Belfort`,
   ],
   bio: [
     `Master's student in Automation, I am currently pursuing my master's thesis at the <strong>Control and Robotics Laboratory</strong> of <strong>École de technologie supérieure</strong>, under the supervision of Prof. <strong>Ilian Bonev</strong> and Prof. <strong>Clément Gosselin</strong>. My research explores serial manipulator morphologies and their implications in the kinematics of the arm.`,
@@ -27,7 +27,7 @@ const publications = [
   {
     title:   "Singularity Analysis of Fanuc's CRX Series",
     authors: "Refalo, A., Mac Leod, P., Bonev, I., and Gosselin, C.",
-    venue:   "IEEE ICRA 2027",
+    venue:   "In preparation for ICRA 2027",
     media:   { type: "image", src: "/media/publications/singularity-analysis-crx.png", zoomable: true },
     tag:     "Publication",
   },
@@ -48,18 +48,10 @@ const publications = [
     tag:     "Publication",
   },
   {
-    title:   "IKDH: Inverse Kinematic solver based on Denavit and Hartenberg convention",
-    venue:   "2026",
-    media:   { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
-    link:    { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external", icon: "fa-solid fa-arrow-up-right-from-square" },
-    description: "Inverse kinematics solver that outputs all the inverse kinematics solutions for a six revolute personalized robot arm and enables singularity analysis.",
-    tag:     "Library",
-  },
-  {
     title:   "R&D at Canon Production Printing",
     venue:   "2023–2024",
     media:   { type: "image", src: "/media/publications/canonnhq.jpg", zoomable: true },
-    description: "Cartesian robots development: for inspecting static microscopic print nozzle defects and contamination, and for inspecting dynamic behavior of the ink on the coating surface. (Confidential)",
+    description: "Cartesian robots for inspecting static microscopic print nozzle defects and dynamic ink behavior on the coating surface.",
     tag:     "Internship",
   },
 ];
@@ -71,7 +63,7 @@ const coursework = [
     year:        2025,
     media:       { type: "image", src: "/media/coursework/AttentionIsAllYouNeed.png", zoomable: true, fit: "contain" },
     link:        { href: "https://github.com/axelrefalo/applied-machine-learning-w2025", type: "external", icon: "fa-brands fa-github" },
-    description: "Applied projects for pattern recognition and classification in Python involving tools like Linear and Logistic Regression, K-Nearest Neighbors, Decision Trees, Convolutional Neural Networks, Deep Neural Networks, and Large Language Models.",
+    description: "Python projects in pattern recognition and classification: regression, KNN, decision trees, neural networks, and LLMs.",
   },
   {
     title:       "Applied Robotics",
@@ -109,23 +101,34 @@ const coursework = [
 
 const projects = [
   {
+    title: "IKDH: An Inverse Kinematic solver based on Denavit and Hartenberg convention",
+    year:  2026,
+    media: { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
+    link:  { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external", icon: "fa-solid fa-arrow-up-right-from-square" },
+    description: "Inverse kinematics solver that outputs all the inverse kinematics solutions for a six revolute personalized robot arm and enables singularity analysis.",
+    tag:   "IKDH",
+  },
+  {
     title: "Cable-Driven Plotter",
     year:  2026,
     media: { type: "image", src: "/media/projects/PolarGraffiti.png", zoomable: true, fit: "contain" },
-    description: "Two-cable-driven parallel plotter for spray painting: dynamic model derived analytically, validated and implemented (work in progress).",
+    description: "Two-cable-driven parallel plotter for spray painting: dynamic model derived analytically, validated and implemented.",
+    tag:   "Cable-Driven Plotter",
   },
   {
     title: "Home Server",
     year:  2025,
     media: { type: "image", src: "/media/projects/home-server.png", zoomable: true },
     description: "Home lab server built and accessed remotely using Unix Shell.",
+    tag:   "Home Server",
   },
   {
-    title: "3-DOF Manipulator",
+    title: "Serial Manipulator",
     year:  2024,
     media: { type: "image", src: "/media/projects/sacha.png", zoomable: true, fit: "contain" },
     link:  { href: "https://grabcad.com/library/sacha-3dof-robot-arm-1", type: "external", icon: "fa-solid fa-cube" },
     description: "Three-degree-of-freedom manipulator with parallelogram mechanism, for pick-and-place tasks, forward and inverse kinematics derived analytically and implemented.",
+    tag:   "Serial Manipulator",
   },
   {
     title: "Puzzle Grid Solver",
@@ -133,6 +136,7 @@ const projects = [
     media: { type: "image", src: "/media/projects/puzzle-grid-solver.png", zoomable: true, fit: "contain" },
     link:  { href: "https://axelrefalo.github.io/puzzle-grid-solver/", type: "external", icon: "fa-solid fa-arrow-up-right-from-square" },
     description: "Algorithms to solve complex grid puzzles: sudoku, kakuro, killer sudoku, suguru, using a backtracking method in C++.",
+    tag:   "Puzzle Grid Solver",
   },
   {
     title: "Fluid Simulator",
@@ -140,6 +144,7 @@ const projects = [
     media: { type: "video", src: "/media/projects/fluid-simulator.mov" },
     link:  { href: "https://axelrefalo.github.io/eulerian-fluid-simulator/web/fluid_simulator.html", type: "external", icon: "fa-solid fa-arrow-up-right-from-square" },
     description: "Simple Eulerian fluid simulator in C++ with the SFML library.",
+    tag:   "Fluid Simulator",
   },
 ];
 ---
@@ -184,8 +189,8 @@ const projects = [
     <section class="tabs-section">
       <nav class="section-tabs">
         <button type="button" class="tab-btn active" data-tab="research">Research</button>
-        <button type="button" class="tab-btn" data-tab="coursework">Coursework</button>
         <button type="button" class="tab-btn" data-tab="projects">Projects</button>
+        <button type="button" class="tab-btn" data-tab="coursework">Coursework</button>
       </nav>
 
       <div class="tab-panel" data-panel="research">
@@ -227,44 +232,6 @@ const projects = [
         </div>
       </div>
 
-      <div class="tab-panel" data-panel="coursework" hidden>
-        <div class="card-list">
-          {coursework.map((item) => (
-            <div class="card-item">
-              <div class="card-media">
-                {item.media.type === "image" ? (
-                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-                ) : (
-                  <video
-                    src={item.media.src}
-                    autoplay muted loop playsinline
-                    class="zoomable"
-                    data-speed={item.media.speed}
-                  ></video>
-                )}
-              </div>
-              <div class="card-content">
-                <div class="card-title"><strong>{item.title}</strong></div>
-                {item.description && <div class="card-description">{item.description}</div>}
-                <div class="card-venue">{item.institution}</div>
-                <div class="card-venue">{item.year}</div>
-              </div>
-              <div class="card-link-col">
-                {item.link && (
-                  <a
-                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
-                    href={item.link.href}
-                    target={item.link.type === "pdf" ? undefined : "_blank"}
-                  >
-                    <i class={item.link.icon}></i>
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div class="tab-panel" data-panel="projects" hidden>
         <div class="card-list">
           {projects.map((item) => (
@@ -282,13 +249,51 @@ const projects = [
                 )}
               </div>
               <div class="card-content">
-                <div class="card-title"><strong>{item.title}</strong></div>
+                {item.tag && <div class="card-tag">{item.tag}</div>}
                 {item.description && <div class="card-description">{item.description}</div>}
                 <div class="card-venue">{item.year}</div>
               </div>
               <div class="card-link-col">
                 {item.link && (
                   <a class="card-link-icon" href={item.link.href} target="_blank">
+                    <i class={item.link.icon}></i>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="coursework" hidden>
+        <div class="card-list">
+          {coursework.map((item) => (
+            <div class="card-item">
+              <div class="card-media">
+                {item.media.type === "image" ? (
+                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+                ) : (
+                  <video
+                    src={item.media.src}
+                    autoplay muted loop playsinline
+                    class="zoomable"
+                    data-speed={item.media.speed}
+                  ></video>
+                )}
+              </div>
+              <div class="card-content">
+                <div class="card-tag">{item.institution}</div>
+                <div class="card-title"><strong>{item.title}</strong></div>
+                {item.description && <div class="card-description">{item.description}</div>}
+                <div class="card-venue">{item.year}</div>
+              </div>
+              <div class="card-link-col">
+                {item.link && (
+                  <a
+                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
+                    href={item.link.href}
+                    target={item.link.type === "pdf" ? undefined : "_blank"}
+                  >
                     <i class={item.link.icon}></i>
                   </a>
                 )}
@@ -373,9 +378,10 @@ const projects = [
   }
 
   .hero-role {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
-    color: #111;
+    color: #333;
+    text-align: justify;
   }
 
   .hero-footer {
@@ -442,11 +448,16 @@ const projects = [
 
 
   .contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     font-size: 13px;
     color: #111;
     text-decoration: none;
-    border-bottom: 1px solid #111;
-    padding-bottom: 1px;
+    background: #f0f0f0;
+    border-radius: 4px;
     transition: opacity 0.15s;
   }
 
@@ -517,9 +528,9 @@ const projects = [
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #666;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    padding: 2px 7px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    padding: 3px 7px;
     margin-bottom: 6px;
   }
 
