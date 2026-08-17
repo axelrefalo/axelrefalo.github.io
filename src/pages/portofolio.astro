@@ -25,18 +25,27 @@ const hero = {
 
 const publications = [
   {
+    title:   "Singularity Analysis of Fanuc's CRX Series",
+    authors: "Refalo, A., Mac Leod, P., Bonev, I., and Gosselin, C.",
+    venue:   "IEEE ICRA 2027",
+    media:   { type: "image", src: "/media/publications/singularity-analysis-crx.png", zoomable: true },
+    tag:     "Publication",
+  },
+  {
     title:   "Singularity Analysis of ABB's GoFa 5 Robot Arm",
     authors: "Refalo, A., Bonev, I., and Gosselin, C.",
     venue:   "IEEE ICRA 2026",
     media:   { type: "image", src: "/media/publications/singularity-analysis.png", zoomable: true },
     link:    { href: "/media/publications/icra2026-poster.pdf", type: "pdf", icon: "fa-regular fa-file" },
+    tag:     "Publication",
   },
   {
-    title:   "An Affordable and Open-Source Gantry Framework for Capturing High Resolution Spatiotemporal Plant Growth Data",
+    title:   "HORTIS: An Open-Source Robotic Framework for Controlled Environment Agriculture with Multimodal Spatiotemporal Plant Observation",
     authors: "Debbagh, M., Refalo, A., et al.",
     venue:   "In preparation",
     media:   { type: "video", src: "/media/publications/plant-growth.mov" },
     link:    { href: "https://github.com/Controlled-Hydroponics-Imaging-Platform", type: "external", icon: "fa-brands fa-github" },
+    tag:     "Publication",
   },
   {
     title:   "IKDH: Inverse Kinematic solver based on Denavit and Hartenberg convention",
@@ -44,12 +53,14 @@ const publications = [
     media:   { type: "image", src: "/media/projects/ikdh.gif", zoomable: true },
     link:    { href: "https://lab-coro.github.io/IKDH/web/ikdh.html", type: "external", icon: "fa-solid fa-arrow-up-right-from-square" },
     description: "Inverse kinematics solver that outputs all the inverse kinematics solutions for a six revolute personalized robot arm and enables singularity analysis.",
+    tag:     "Library",
   },
   {
     title:   "R&D at Canon Production Printing",
     venue:   "2023–2024",
     media:   { type: "image", src: "/media/publications/canonnhq.jpg", zoomable: true },
     description: "Cartesian robots development: for inspecting static microscopic print nozzle defects and contamination, and for inspecting dynamic behavior of the ink on the coating surface. (Confidential)",
+    tag:     "Internship",
   },
 ];
 
@@ -194,6 +205,7 @@ const projects = [
                 )}
               </div>
               <div class="card-content">
+                {item.tag && <div class="card-tag">{item.tag}</div>}
                 <div class="card-title"><strong>{item.title}</strong></div>
                 {item.description && <div class="card-description">{item.description}</div>}
                 {item.authors && <div class="card-authors">{item.authors}</div>}
@@ -496,6 +508,19 @@ const projects = [
     flex-direction: column;
     gap: 4px;
     padding-top: 4px;
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-bottom: 6px;
   }
 
   .card-title {
