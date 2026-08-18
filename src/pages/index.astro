@@ -505,8 +505,9 @@ const projects = [
     display: flex;
     align-items: center;
     flex: 1;
-    min-height: 28px;
-    padding: 4px 10px;
+    min-width: 0;
+    height: 28px;
+    padding: 0 10px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -514,6 +515,9 @@ const projects = [
     color: #666;
     background: #f0f0f0;
     border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card-title {
