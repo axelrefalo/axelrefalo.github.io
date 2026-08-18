@@ -159,21 +159,7 @@ const projects = [
           <img src={hero.photo} alt={hero.name} />
         </div>
         <div class="hero-info">
-          <div class="hero-name-row">
-            <div class="hero-name">{hero.name}</div>
-            <div class="contact-links">
-              {hero.links.map((link) => (
-                <a
-                  class={`contact-link${link.type === "pdf" ? " pdf-link" : ""}`}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  title={link.label}
-                >
-                  <i class={link.icon}></i>
-                </a>
-              ))}
-            </div>
-          </div>
+          <div class="hero-name">{hero.name}</div>
           {hero.roles.map((r) => <div class="hero-role" set:html={r} />)}
         </div>
       </div>
@@ -186,124 +172,131 @@ const projects = [
       </div>
       <div class="hero-footer">
         {hero.bio.map((para) => <p class="hero-bio" set:html={para} />)}
+        <div class="contact-links">
+          {hero.links.map((link) => (
+            <a
+              class={`contact-link${link.type === "pdf" ? " pdf-link" : ""}`}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              title={link.label}
+            >
+              <i class={link.icon}></i>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 
-    <section class="tabs-section">
-      <nav class="section-tabs">
-        <button type="button" class="tab-btn active" data-tab="research">Research</button>
-        <button type="button" class="tab-btn" data-tab="projects">Projects</button>
-        <button type="button" class="tab-btn" data-tab="coursework">Coursework</button>
-      </nav>
-
-      <div class="tab-panel" data-panel="research">
-        <div class="card-list">
-          {publications.map((item) => (
-            <div class="card-item">
-              <div class="card-media">
-                {item.media.type === "image" ? (
-                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-                ) : (
-                  <video
-                    src={item.media.src}
-                    autoplay muted loop playsinline
-                    class="zoomable"
-                    data-speed={item.media.speed}
-                  ></video>
+    <section>
+      <div class="section-label">Research</div>
+      <div class="card-list">
+        {publications.map((item) => (
+          <div class="card-item">
+            <div class="card-media">
+              {item.media.type === "image" ? (
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+              ) : (
+                <video
+                  src={item.media.src}
+                  autoplay muted loop playsinline
+                  class="zoomable"
+                  data-speed={item.media.speed}
+                ></video>
+              )}
+            </div>
+            <div class="card-content">
+              <div class="card-top-row">
+                {item.tag && <div class="card-tag">{item.tag}</div>}
+                {item.link && (
+                  <a
+                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
+                    href={item.link.href}
+                    target={item.link.type === "pdf" ? undefined : "_blank"}
+                  >
+                    <i class={item.link.icon}></i>
+                  </a>
                 )}
               </div>
-              <div class="card-content">
-                <div class="card-top-row">
-                  {item.tag && <div class="card-tag">{item.tag}</div>}
-                  {item.link && (
-                    <a
-                      class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
-                      href={item.link.href}
-                      target={item.link.type === "pdf" ? undefined : "_blank"}
-                    >
-                      <i class={item.link.icon}></i>
-                    </a>
-                  )}
-                </div>
-                <div class="card-title"><strong>{item.title}</strong></div>
-                {item.description && <div class="card-description">{item.description}</div>}
-                {item.authors && <div class="card-authors">{item.authors}</div>}
-                <div class="card-venue">{item.venue}</div>
-              </div>
+              <div class="card-title"><strong>{item.title}</strong></div>
+              {item.description && <div class="card-description">{item.description}</div>}
+              {item.authors && <div class="card-authors">{item.authors}</div>}
+              <div class="card-venue">{item.venue}</div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </section>
 
-      <div class="tab-panel" data-panel="projects" hidden>
-        <div class="card-list">
-          {projects.map((item) => (
-            <div class="card-item">
-              <div class="card-media">
-                {item.media.type === "image" ? (
-                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-                ) : (
-                  <video
-                    src={item.media.src}
-                    autoplay muted loop playsinline
-                    class="zoomable"
-                    data-speed={item.media.speed}
-                  ></video>
+    <section>
+      <div class="section-label">Projects</div>
+      <div class="card-list">
+        {projects.map((item) => (
+          <div class="card-item">
+            <div class="card-media">
+              {item.media.type === "image" ? (
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+              ) : (
+                <video
+                  src={item.media.src}
+                  autoplay muted loop playsinline
+                  class="zoomable"
+                  data-speed={item.media.speed}
+                ></video>
+              )}
+            </div>
+            <div class="card-content">
+              <div class="card-top-row">
+                {item.tag && <div class="card-tag">{item.tag}</div>}
+                {item.link && (
+                  <a class="card-link-icon" href={item.link.href} target="_blank">
+                    <i class={item.link.icon}></i>
+                  </a>
                 )}
               </div>
-              <div class="card-content">
-                <div class="card-top-row">
-                  {item.tag && <div class="card-tag">{item.tag}</div>}
-                  {item.link && (
-                    <a class="card-link-icon" href={item.link.href} target="_blank">
-                      <i class={item.link.icon}></i>
-                    </a>
-                  )}
-                </div>
-                {item.description && <div class="card-description">{item.description}</div>}
-                <div class="card-venue">{item.year}</div>
-              </div>
+              {item.description && <div class="card-description">{item.description}</div>}
+              <div class="card-venue">{item.year}</div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </section>
 
-      <div class="tab-panel" data-panel="coursework" hidden>
-        <div class="card-list">
-          {coursework.map((item) => (
-            <div class="card-item">
-              <div class="card-media">
-                {item.media.type === "image" ? (
-                  <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
-                ) : (
-                  <video
-                    src={item.media.src}
-                    autoplay muted loop playsinline
-                    class="zoomable"
-                    data-speed={item.media.speed}
-                  ></video>
+    <section>
+      <div class="section-label">Coursework</div>
+      <div class="card-list">
+        {coursework.map((item) => (
+          <div class="card-item">
+            <div class="card-media">
+              {item.media.type === "image" ? (
+                <img src={item.media.src} alt={item.title} class={`${item.media.zoomable ? "zoomable" : ""}${item.media.fit === "contain" ? " contain" : ""}`} />
+              ) : (
+                <video
+                  src={item.media.src}
+                  autoplay muted loop playsinline
+                  class="zoomable"
+                  data-speed={item.media.speed}
+                ></video>
+              )}
+            </div>
+            <div class="card-content">
+              <div class="card-top-row">
+                <div class="card-tag">{item.institution}</div>
+                {item.link && (
+                  <a
+                    class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
+                    href={item.link.href}
+                    target={item.link.type === "pdf" ? undefined : "_blank"}
+                  >
+                    <i class={item.link.icon}></i>
+                  </a>
                 )}
               </div>
-              <div class="card-content">
-                <div class="card-top-row">
-                  <div class="card-tag">{item.institution}</div>
-                  {item.link && (
-                    <a
-                      class={`card-link-icon${item.link.type === "pdf" ? " pdf-link" : ""}`}
-                      href={item.link.href}
-                      target={item.link.type === "pdf" ? undefined : "_blank"}
-                    >
-                      <i class={item.link.icon}></i>
-                    </a>
-                  )}
-                </div>
-                <div class="card-title"><strong>{item.title}</strong></div>
-                {item.description && <div class="card-description">{item.description}</div>}
-                <div class="card-venue">{item.year}</div>
-              </div>
+              <div class="card-title"><strong>{item.title}</strong></div>
+              {item.description && <div class="card-description">{item.description}</div>}
+              <div class="card-venue">{item.year}</div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -338,10 +331,6 @@ const projects = [
     border-bottom: none;
   }
 
-  .tabs-section {
-    padding-top: 20px;
-  }
-
   #home {
     display: flex;
     flex-direction: column;
@@ -364,14 +353,6 @@ const projects = [
     width: 100%;
   }
 
-  .hero-name-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-    margin-bottom: 6px;
-  }
 
   .hero-photo {
     width: 120px;
@@ -393,6 +374,7 @@ const projects = [
     font-weight: 700;
     color: #111;
     line-height: 1.2;
+    margin-bottom: 6px;
   }
 
   .hero-role {
@@ -420,48 +402,21 @@ const projects = [
     margin-top: 6px;
   }
 
-  .section-tabs {
-    display: flex;
-    width: fit-content;
-    margin: 0 auto 40px;
-    padding: 4px;
-    background: #f2f2f2;
-    border-radius: 8px;
-  }
-
-  .tab-btn {
-    display: block;
-    background: none;
-    border: none;
-    border-radius: 6px;
-    padding: 7px 18px;
-    margin: 0;
-    font-family: inherit;
-    font-size: 13px;
-    line-height: 1;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #888;
-    cursor: pointer;
-    transition: color 0.15s, background 0.15s;
-  }
-
-  .tab-btn:hover {
-    color: #333;
-  }
-
-  .tab-btn.active {
+  .section-label {
+    font-size: 18px;
     font-weight: 700;
-    color: #111;
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 28px;
   }
 
   .contact-links {
     display: flex;
-    gap: 24px;
+    justify-content: center;
+    gap: 40px;
     flex-wrap: wrap;
+    margin-top: 16px;
   }
 
 
@@ -663,9 +618,7 @@ const projects = [
     #home { flex-direction: column; gap: 24px; }
     .hero-top { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hero-photo { width: 88px; height: 88px; }
-    .hero-name-row { flex-direction: column; align-items: flex-start; gap: 12px; }
     .contact-links { gap: 12px; }
-    .tab-btn { padding: 7px 8px; font-size: 11px; letter-spacing: 0.5px; }
     .card-item { flex-direction: column; }
     .card-media { width: 100%; height: auto; aspect-ratio: 200 / 130; }
   }
@@ -720,40 +673,4 @@ const projects = [
       cvFrame.src = '';
     }
   });
-
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabPanels = document.querySelectorAll('.tab-panel');
-  const tabOrder = Array.from(tabBtns).map((btn) => btn.dataset.tab);
-
-  function selectTab(tabName) {
-    tabBtns.forEach((b) => b.classList.toggle('active', b.dataset.tab === tabName));
-    tabPanels.forEach((p) => { p.hidden = p.dataset.panel !== tabName; });
-  }
-
-  tabBtns.forEach((btn) => {
-    btn.addEventListener('click', () => selectTab(btn.dataset.tab));
-  });
-
-  const tabsSection = document.querySelector('.tabs-section');
-  let touchStartX = 0;
-  let touchStartY = 0;
-
-  tabsSection.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  tabsSection.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
-
-    const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
-    const currentIndex = tabOrder.indexOf(activeTab);
-    const nextIndex = dx < 0
-      ? Math.min(currentIndex + 1, tabOrder.length - 1)
-      : Math.max(currentIndex - 1, 0);
-
-    if (nextIndex !== currentIndex) selectTab(tabOrder[nextIndex]);
-  }, { passive: true });
 </script>
